@@ -52,8 +52,7 @@ class _SplashScreenState extends State<SplashScreen> {
           children: [
             Text(
               "Welcome to",
-              style: context.textTheme.displayMedium
-                  ?.copyWith(fontStyle: FontStyle.italic),
+              style: context.textTheme.displayMedium,
             ).animate().fadeIn(duration: 1000.milliseconds),
             Text(
               "Stroll.",

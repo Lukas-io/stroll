@@ -30,24 +30,27 @@ class _StoryIndicatorState extends State<StoryIndicator>
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(24.0),
-            color: greyColor.withOpacity(.5),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 24.0),
+      child: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(24.0),
+              color: greyColor.withOpacity(.5),
+            ),
+            height: 5.0,
           ),
-          height: 5.0,
-        ),
-        Container(
-          width: _controller.value * MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(24.0),
-            color: Colors.deepPurple.withOpacity(.9),
-          ),
-          height: 5.0,
-        )
-      ],
+          Container(
+            width: _controller.value * MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(24.0),
+              color: Colors.deepPurple.withOpacity(.9),
+            ),
+            height: 5.0,
+          )
+        ],
+      ),
     );
   }
 }
