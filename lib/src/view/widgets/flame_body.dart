@@ -41,7 +41,7 @@ class FlameBody extends StatelessWidget {
                 children: [
                   const ProfileAvatar().animate().moveY(
                       begin: 30,
-                      delay: 1200.milliseconds,
+                      delay: 1000.milliseconds,
                       duration: 600.milliseconds,
                       curve: Curves.fastOutSlowIn),
                   Positioned(
@@ -152,8 +152,8 @@ class ProfileAvatar extends StatelessWidget {
                   ?.copyWith(fontWeight: FontWeight.w700),
             ),
           ).animate().fadeIn(
-              duration: 800.milliseconds,
-              delay: 1800.milliseconds,
+              duration: 900.milliseconds,
+              delay: 1000.milliseconds,
               curve: Curves.fastOutSlowIn),
         ),
         Container(

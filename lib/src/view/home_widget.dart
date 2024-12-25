@@ -38,6 +38,7 @@ class _HomeWidgetState extends State<HomeWidget> {
     return Scaffold(
       body: screens[selectedIndex ?? 0],
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         currentIndex: selectedIndex ?? 0,
         showSelectedLabels: false,
         showUnselectedLabels: false,

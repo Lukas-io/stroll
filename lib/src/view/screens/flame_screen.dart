@@ -3,7 +3,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:stroll/src/constants/assets.dart';
 import 'package:stroll/src/view/widgets/flame_body.dart';
 
-import '../widgets/strollBonfireWidget.dart';
+import '../widgets/stroll_bonfire_widget.dart';
 
 class FlameScreen extends StatelessWidget {
   const FlameScreen({super.key});
@@ -46,7 +46,16 @@ class FlameScreen extends StatelessWidget {
           SafeArea(
             child: Column(
               children: [
-                const Expanded(child: StrollBonfireWidget()),
+                Expanded(
+                  child: const StrollBonfireWidget()
+                      .animate()
+                      .then(delay: 200.ms)
+                      .moveY(begin: 10, duration: 500.ms, curve: Curves.easeOut)
+                      .fadeIn(
+                          delay: 400.ms,
+                          duration: 600.ms,
+                          curve: Curves.easeOut),
+                ),
                 const FlameBody()
                     .animate()
                     .moveY(begin: 30, curve: Curves.fastOutSlowIn),

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:stroll/src/constants/extensions.dart';
 
 import '../../constants/colors.dart';
@@ -84,7 +85,11 @@ class StrollBonfireWidget extends StatelessWidget {
                   fontWeight: FontWeight.w600),
             ),
           ],
-        ),
+        )
+            .animate()
+            .then(delay: 400.ms)
+            .moveY(begin: 10, duration: 500.ms, curve: Curves.easeOut)
+            .fadeIn(delay: 400.ms, duration: 600.ms, curve: Curves.easeOut),
       ],
     );
   }
