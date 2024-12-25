@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:stroll/src/constants/colors.dart';
 import 'package:stroll/src/constants/extensions.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:stroll/src/constants/images.dart';
-import 'package:stroll/src/view/home_widget.dart';
+
+import '../../constants/assets.dart';
+import 'onboarding_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -21,7 +22,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Timer(4.seconds, () {
       Navigator.of(context).pushReplacement(
         PageRouteBuilder(
-          pageBuilder: (_, __, ___) => const HomeWidget(),
+          pageBuilder: (_, __, ___) => const OnboardingScreen(),
           transitionsBuilder: (_, animation, __, child) {
             return FadeTransition(
               opacity: animation,

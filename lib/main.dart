@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stroll/src/constants/theme.dart';
-import 'package:stroll/src/view/splash_screen.dart';
+import 'package:stroll/src/view/screens/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());

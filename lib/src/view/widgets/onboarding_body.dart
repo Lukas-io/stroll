@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:stroll/src/constants/extensions.dart';
 
-import '../constants/colors.dart';
+import '../../constants/colors.dart';
+import '../home_widget.dart';
 import 'options_widget.dart';
 
 class OnboardingBody extends StatelessWidget {
@@ -36,7 +37,7 @@ class OnboardingBody extends StatelessWidget {
           child: Container(
             height: MediaQuery.sizeOf(context).height / 6,
             width: MediaQuery.sizeOf(context).width,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.center,
                 end: Alignment.topCenter,
@@ -57,16 +58,14 @@ class OnboardingBody extends StatelessWidget {
               width: MediaQuery.sizeOf(context).width,
               decoration: BoxDecoration(
                 gradient: RadialGradient(
-                    center: Alignment.bottomCenter, // Center of the gradient
-                    radius: 2,
-                    colors: [
-                      Colors.deepPurple.shade900.withOpacity(.6),
-                      Colors.black
-                    ],
-                    stops: [
-                      -1,
-                      .6
-                    ]),
+                  center: Alignment.bottomCenter, // Center of the gradient
+                  radius: 2,
+                  colors: [
+                    Colors.deepPurple.shade900.withOpacity(.6),
+                    Colors.black
+                  ],
+                  stops: const [-1, 0.6],
+                ),
               ),
             ),
           ),
@@ -111,7 +110,12 @@ class OnboardingBody extends StatelessWidget {
                           ?.copyWith(fontWeight: FontWeight.w600),
                     ),
                     IconButton.outlined(
-                      onPressed: null,
+                      onPressed: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const HomeWidget(
+                                    index: 1,
+                                  ))),
                       icon: const Icon(
                         Icons.arrow_forward,
                         size: 35.0,
