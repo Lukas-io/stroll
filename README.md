@@ -44,7 +44,7 @@ lib/
 │   ├── utils/
 │   └── view/
 │   │   ├── screens/
-│   │   ├── widgets/
+│   │   └── widgets/
 │   │   │   ├── chat/
 │   │   │   ├── flame/
 │   │   │   ├── onboarding/
