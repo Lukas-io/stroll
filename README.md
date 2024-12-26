@@ -48,7 +48,7 @@ lib/
 │   │   │   ├── chat/
 │   │   │   ├── flame/
 │   │   │   ├── onboarding/
-│   │   │   ├── story/
+│   │   │   └── story/
 └── main.dart
 ```
 
