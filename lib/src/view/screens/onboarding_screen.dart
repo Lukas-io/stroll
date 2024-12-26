@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
 import '../../constants/assets.dart';
-import '../widgets/onboarding_body.dart';
-import '../widgets/story_indicator.dart';
+import '../widgets/onboarding/onboarding_body.dart';
+import '../widgets/story/story_indicator.dart';
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});

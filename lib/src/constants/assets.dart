@@ -2,6 +2,7 @@
 const String imageSplashScreen = "assets/images/couple2.png";
 const String imageOnboarding = "assets/images/couple3.png";
 const String imageFlame = "assets/images/background.png";
+const String imageNight = "assets/images/night.png";
 const String imageAngelina = "assets/images/lady1.png";
 const String imageJoey = "assets/images/lady1.png";
 const String imageBinghan = "assets/images/man1.png";

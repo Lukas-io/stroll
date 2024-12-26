@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:stroll/src/constants/colors.dart';
-import 'package:stroll/src/constants/extensions.dart';
+import 'package:stroll/src/utils/extensions.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
 import '../../constants/assets.dart';

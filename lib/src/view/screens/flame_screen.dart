@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:stroll/src/constants/assets.dart';
-import 'package:stroll/src/view/widgets/flame_body.dart';
+import 'package:stroll/src/view/widgets/flame/flame_body.dart';
 
-import '../widgets/stroll_bonfire_widget.dart';
+import '../widgets/flame/stroll_bonfire_widget.dart';
 
 class FlameScreen extends StatelessWidget {
   const FlameScreen({super.key});

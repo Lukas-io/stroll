@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:stroll/src/constants/colors.dart';
-import 'package:stroll/src/constants/extensions.dart';
+import 'package:stroll/src/utils/extensions.dart';
 import 'package:stroll/src/model/story_model.dart';
 
-import '../widgets/story_indicator.dart';
-import '../widgets/stroll_question_widget.dart';
+import '../widgets/story/story_indicator.dart';
+import '../widgets/chat/stroll_question_widget.dart';
 
 class StoryScreen extends StatelessWidget {
   final StoryModel story;

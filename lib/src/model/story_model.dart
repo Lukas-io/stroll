@@ -29,7 +29,7 @@ const List<StoryModel> stories = [
       question: "Mountain or Ocean?",
       urgent: true),
   StoryModel(
-      decorationImage: imageAngelina,
+      decorationImage: imageSplashScreen,
       name: "Amanda, 22",
       timeLeft: "3m",
       question: "What you usually do when you're alone?",
