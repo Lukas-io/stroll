@@ -8,6 +8,7 @@ class WaveformWidget extends StatelessWidget {
   final double height;
   final bool quietBeginning;
   final Color color;
+  final EdgeInsets? padding;
 
   const WaveformWidget(
       {super.key,
@@ -15,20 +16,29 @@ class WaveformWidget extends StatelessWidget {
       required this.width,
       required this.height,
       this.quietBeginning = false,
+      this.padding,
       required this.color});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(right: 8.0),
+      padding: padding ?? const EdgeInsets.only(right: 8.0),
       child: Row(
         children: List.generate(waves, (index) {
+          double multiplier = 1;
+          if (index < 10) {
+            multiplier = 1 / (10 - index);
+          }
+
+          double waveHeight =
+              (Random().nextDouble() * height / 2 + height / 3) * multiplier;
+
           return Padding(
             padding: const EdgeInsets.only(left: 4.0),
             child: Container(
               width: width,
               color: color,
-              height: Random().nextDouble() * height / 2 + height / 3,
+              height: waveHeight,
             ),
           );
         }),

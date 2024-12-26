@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stroll/src/constants/colors.dart';
 import 'package:stroll/src/constants/extensions.dart';
@@ -45,8 +44,10 @@ class UnlockedChatView extends StatelessWidget {
             ],
           ),
           ...chats.map((chat) {
-            return ChatWidget(
-              chat: chat,
+            return InkWell(
+              child: ChatWidget(
+                chat: chat,
+              ),
             );
           })
         ],

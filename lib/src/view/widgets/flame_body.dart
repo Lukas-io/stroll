@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:stroll/src/constants/assets.dart';
 import 'package:stroll/src/constants/extensions.dart';
+import 'package:stroll/src/view/widgets/profile_avatar.dart';
 
 import '../../constants/colors.dart';
 import 'options_widget.dart';
@@ -122,56 +122,6 @@ class FlameBody extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-}
-
-class ProfileAvatar extends StatelessWidget {
-  const ProfileAvatar({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Positioned(
-          left: 35.0,
-          top: 10.0,
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12.0),
-              color: secondaryCardColor,
-            ),
-            // width: 300,
-            padding: const EdgeInsets.only(
-                left: 40.0, right: 16.0, top: 2, bottom: 2),
-            child: Text(
-              "Angelina, 28",
-              style: context.textTheme.bodyMedium
-                  ?.copyWith(fontWeight: FontWeight.w700),
-            ),
-          ).animate().fadeIn(
-              duration: 900.milliseconds,
-              delay: 1000.milliseconds,
-              curve: Curves.fastOutSlowIn),
-        ),
-        Container(
-          decoration: BoxDecoration(
-            border: Border.all(color: secondaryCardColor, width: 4.0),
-            shape: BoxShape.circle,
-          ),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(360),
-            child: Image.asset(
-              imageAngelina,
-              height: 60.0,
-              width: 60.0,
-              fit: BoxFit.cover,
-            ),
-          ),
-        ),
-      ],
     );
   }
 }

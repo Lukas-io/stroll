@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:stroll/src/constants/assets.dart';
-import 'package:stroll/src/view/screens/chat_screen.dart';
+import 'package:stroll/src/view/screens/chats_screen.dart';
 import 'package:stroll/src/view/screens/flame_screen.dart';
 
 class HomeWidget extends StatefulWidget {
@@ -17,7 +17,7 @@ class _HomeWidgetState extends State<HomeWidget> {
   List<Widget> screens = const [
     SizedBox(),
     FlameScreen(),
-    ChatScreen(),
+    ChatsScreen(),
     SizedBox(),
   ];
   int? selectedIndex;

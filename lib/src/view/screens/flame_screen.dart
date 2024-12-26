@@ -56,9 +56,7 @@ class FlameScreen extends StatelessWidget {
                           duration: 600.ms,
                           curve: Curves.easeOut),
                 ),
-                const FlameBody()
-                    .animate()
-                    .moveY(begin: 30, curve: Curves.fastOutSlowIn),
+                const FlameBody().animate().move(curve: Curves.fastOutSlowIn),
               ],
             ),
           )

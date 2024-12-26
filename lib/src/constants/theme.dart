@@ -12,5 +12,7 @@ final darkTheme = ThemeData(
   useMaterial3: true,
   cardColor: cardColor,
   fontFamily: "ProximaNova",
+  bottomSheetTheme:
+      const BottomSheetThemeData(backgroundColor: backgroundColor),
   textTheme: darkTextTheme,
 );

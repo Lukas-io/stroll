@@ -1,40 +1,70 @@
 import 'package:flutter/material.dart';
-import 'package:stroll/src/constants/assets.dart';
-import 'package:stroll/src/view/widgets/story_list_view.dart';
-import 'package:stroll/src/view/widgets/unlocked_chat_view.dart';
+import 'package:stroll/src/constants/extensions.dart';
+import 'package:stroll/src/model/chat_model.dart';
 
-import '../widgets/locked_header_widget.dart';
-import '../widgets/match_like_tab.dart';
+import '../../constants/colors.dart';
+import '../widgets/chat_unlocked_widget.dart';
+import '../widgets/message_text_field.dart';
+import '../widgets/stroll_voice_question.dart';
 
 class ChatScreen extends StatelessWidget {
-  const ChatScreen({super.key});
+  final ChatModel chat;
+
+  const ChatScreen({super.key, required this.chat});
 
   @override
   Widget build(BuildContext context) {
+    final double bottomPadding = MediaQuery.of(context).padding.bottom == 0
+        ? 8
+        : MediaQuery.of(context).padding.bottom;
     return Scaffold(
-      // backgroundColor: Color(0xFF13171C),
+      bottomSheet: MessageTextField(
+        bottomPadding: bottomPadding,
+      ),
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Colors.transparent,
+        surfaceTintColor: Colors.transparent,
+        elevation: 0,
+        leading: IconButton(
+            onPressed: () => Navigator.pop(context),
+            icon: Icon(
+              Icons.adaptive.arrow_back,
+              color: whiteTextColor,
+              size: 30,
+            )),
+        title: Text(
+          chat.name,
+          style: context.textTheme.titleLarge
+              ?.copyWith(color: whiteTextColor, fontWeight: FontWeight.w700),
+        ),
+        actions: const [
+          IconButton(
+              onPressed: null,
+              icon: Icon(
+                Icons.more_horiz_rounded,
+                size: 30,
+                color: whiteTextColor,
+              )),
+        ],
+      ),
       body: Stack(
         children: [
-          Image.asset(imageSplashScreen),
-          Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-                  Colors.transparent,
-                  Color(0xFF13171C),
-                ],
-                stops: [0.3, 0.5],
-              ),
-            ),
-            child: const SafeArea(
+          // QuestionAnswerWidget(
+          //   chat: chat,
+          //   mine: true,
+          // ),
+          SafeArea(
+            child: SingleChildScrollView(
               child: Column(
                 children: [
-                  MatchLikeTab(),
-                  LockedHeaderWidget(),
-                  StoryListView(),
-                  UnlockedChatView()
+                  StrollVoiceQuestion(chat: chat, mine: true),
+                  StrollVoiceQuestion(chat: chat),
+                  ChatUnlockedWidget(chat: chat),
+                  const SizedBox(
+                    height: 300.0,
+                  )
                 ],
               ),
             ),

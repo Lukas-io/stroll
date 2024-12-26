@@ -104,6 +104,7 @@ class OptionWidget extends StatelessWidget {
           children: [
             if (numbering != null)
               Container(
+                alignment: Alignment.center,
                 padding: const EdgeInsets.all(6.0),
                 margin: const EdgeInsets.all(8.0),
                 decoration: BoxDecoration(
