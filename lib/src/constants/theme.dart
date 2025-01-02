@@ -14,5 +14,9 @@ final darkTheme = ThemeData(
   fontFamily: "ProximaNova",
   bottomSheetTheme:
       const BottomSheetThemeData(backgroundColor: backgroundColor),
+  textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(
+    padding: EdgeInsets.zero,
+  )),
   textTheme: darkTextTheme,
 );

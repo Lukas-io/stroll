@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stroll/src/utils/extensions.dart';
 import 'package:stroll/src/view/widgets/chat/question_answer_widget.dart';
-import 'package:stroll/src/view/widgets/chat/waveform_widget.dart';
+import 'package:stroll/src/view/widgets/chat/simulated_waveform_widget.dart';
 
 import '../../../constants/assets.dart';
 import '../../../constants/colors.dart';
@@ -123,7 +123,7 @@ class StrollVoiceQuestion extends StatelessWidget {
                   child: Stack(
                     clipBehavior: Clip.none,
                     children: [
-                      const WaveformWidget(
+                      const SimulatedWaveformWidget(
                           waves: 40,
                           width: 1.4,
                           height: 40,

@@ -4,7 +4,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:stroll/src/constants/assets.dart';
 import 'package:stroll/src/utils/extensions.dart';
 import 'package:stroll/src/view/widgets/flame/profile_avatar.dart';
-import 'package:stroll/src/view/widgets/chat/waveform_widget.dart';
+import 'package:stroll/src/view/widgets/chat/simulated_waveform_widget.dart';
 
 import '../../../constants/colors.dart';
 import '../../../model/chat_model.dart';
@@ -144,7 +144,7 @@ class QuestionAnswerWidget extends StatelessWidget {
                                   child: Stack(
                                     clipBehavior: Clip.none,
                                     children: [
-                                      const WaveformWidget(
+                                      const SimulatedWaveformWidget(
                                           waves: 45,
                                           width: 2,
                                           quietBeginning: true,

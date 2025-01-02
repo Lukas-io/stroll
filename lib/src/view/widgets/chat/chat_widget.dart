@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stroll/src/utils/extensions.dart';
 import 'package:stroll/src/view/screens/chat_screen.dart';
-import 'package:stroll/src/view/widgets/chat/waveform_widget.dart';
+import 'package:stroll/src/view/widgets/chat/simulated_waveform_widget.dart';
 
 import '../../../constants/colors.dart';
 import '../../../model/chat_model.dart';
@@ -89,7 +89,7 @@ class ChatWidget extends StatelessWidget {
                                     ),
                                   ),
                                 if (chat.voice)
-                                  const WaveformWidget(
+                                  const SimulatedWaveformWidget(
                                       waves: 6,
                                       width: 1.8,
                                       height: 20.0,

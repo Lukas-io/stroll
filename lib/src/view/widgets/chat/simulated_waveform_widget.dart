@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
-class WaveformWidget extends StatelessWidget {
+class SimulatedWaveformWidget extends StatelessWidget {
   final int waves;
   final double width;
   final double height;
@@ -12,7 +12,7 @@ class WaveformWidget extends StatelessWidget {
   final EdgeInsets? padding;
   final bool animate;
 
-  const WaveformWidget(
+  const SimulatedWaveformWidget(
       {super.key,
       required this.waves,
       required this.width,
