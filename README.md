@@ -1,16 +1,12 @@
 # Stroll BeReal Clone
 
-A modern dating application built with Flutter that focuses on authentic connections through voice
-messages and prompted conversations.
+A modern dating application built with Flutter that focuses on authentic connections through voice messages and prompted conversations.
 
 ## 📱 Features
 
-- Interactive matching system with locked and unlocked conversations
-- Voice message integration for authentic communication
-- Profile system with customizable prompts and responses
-- Responsive design supporting multiple device sizes
-- Real-time chat functionality
-- Tag-based relationship preference system
+- Interactive matching style with locked and unlocked conversations.
+- Voice message user interface integration.
+- Responsive design supporting multiple device sizes.
 
 ## 🛠️ Technical Implementation
 
@@ -44,11 +40,11 @@ lib/
 │   ├── utils/
 │   └── view/
 │   │   ├── screens/
-│   │   ├── widgets/
+│   │   └── widgets/
 │   │   │   ├── chat/
 │   │   │   ├── flame/
 │   │   │   ├── onboarding/
-│   │   │   ├── story/
+│   │   │   └── story/
 └── main.dart
 ```
 
