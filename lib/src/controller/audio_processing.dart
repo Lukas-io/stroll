@@ -44,18 +44,18 @@ extension on BytesBuilder {
   }
 }
 
-List<double> interpolateList(List<double> inputList) {
+List<double> interpolateList(List<double> inputList, int interpolateNumber) {
   // If input list is empty
-  if (inputList.isEmpty) return List.filled(65, 0.0);
+  if (inputList.isEmpty) return List.filled(interpolateNumber, 0.0);
 
   // If input list is >= 65, return first 65 elements
-  if (inputList.length >= 65) {
-    return inputList.sublist(0, 65);
+  if (inputList.length >= interpolateNumber) {
+    return inputList.sublist(0, interpolateNumber);
   }
 
   List<double> outputList = [];
-  int pointsPerSegment = 65 ~/ inputList.length;
-  int remainingPoints = 65 % inputList.length;
+  int pointsPerSegment = interpolateNumber ~/ inputList.length;
+  int remainingPoints = interpolateNumber % inputList.length;
 
   // Handle each segment
   for (int i = 0; i < inputList.length; i++) {
