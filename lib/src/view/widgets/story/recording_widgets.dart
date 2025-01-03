@@ -70,10 +70,7 @@ class _RecordingWidgetsState extends State<RecordingWidgets> {
         recorder.pauseAudio();
         break;
     }
-    if (mounted)
-      setState(() {
-        print(action);
-      });
+    if (mounted) setState(() {});
   }
 
   @override
