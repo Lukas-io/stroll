@@ -53,7 +53,7 @@ class FlameBody extends StatelessWidget {
                         "What is your favorite time of the day?",
                         maxLines: 2,
                         style: context.textTheme.headlineSmall
-                            ?.copyWith(fontWeight: FontWeight.w700),
+                            ?.copyWith(fontWeight: FontWeight.w700, height: 0),
                       ),
                     ),
                   ),
@@ -64,7 +64,7 @@ class FlameBody extends StatelessWidget {
               '"Mine is definitely the peace in the morning."',
               style: context.textTheme.bodyMedium?.copyWith(
                 fontStyle: FontStyle.italic,
-                color: primaryColor,
+                color: purpleTextColor,
                 shadows: const [
                   BoxShadow(
                       color: whiteTextColor, blurRadius: 0.3, spreadRadius: 1),

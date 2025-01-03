@@ -37,7 +37,7 @@ class ProfileAvatar extends StatelessWidget {
             ),
             // width: 300,
             padding: EdgeInsets.only(
-                left: radius * 6 / 5, right: 8.0, top: 2, bottom: 2),
+                left: radius * 30 / 29, right: 8.0, top: 2, bottom: 2),
             child: Text(
               text ?? "Angelina, 28",
               style: context.textTheme.bodyMedium

@@ -6,10 +6,17 @@ import '../../../constants/colors.dart';
 import '../../../model/story_model.dart';
 import '../story/recording_widgets.dart';
 
-class StrollQuestionWidget extends StatelessWidget {
+class StrollQuestionWidget extends StatefulWidget {
   final StoryModel story;
 
   const StrollQuestionWidget({super.key, required this.story});
+
+  @override
+  State<StrollQuestionWidget> createState() => _StrollQuestionWidgetState();
+}
+
+class _StrollQuestionWidgetState extends State<StrollQuestionWidget> {
+  Key _canvasKey = UniqueKey();
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +50,7 @@ class StrollQuestionWidget extends StatelessWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(360),
                         child: Image.asset(
-                          story.decorationImage,
+                          widget.story.decorationImage,
                           height: 60.0,
                           width: 60.0,
                           fit: BoxFit.cover,
@@ -82,7 +89,7 @@ class StrollQuestionWidget extends StatelessWidget {
                   height: 16.0,
                 ),
                 Text(
-                  story.question,
+                  widget.story.question,
                   textAlign: TextAlign.center,
                   style: context.textTheme.headlineMedium
                       ?.copyWith(fontWeight: FontWeight.w700),
@@ -127,7 +134,14 @@ class StrollQuestionWidget extends StatelessWidget {
                   delay: 100.ms,
                 ),
           ),
-          const RecordingWidgets()
+          RecordingWidgets(
+            key: _canvasKey,
+            onDelete: () => setState(() {
+              // This will force Flutter to dispose the old widget
+              // and create a completely new instance
+              _canvasKey = UniqueKey();
+            }),
+          )
         ],
       ),
     );
