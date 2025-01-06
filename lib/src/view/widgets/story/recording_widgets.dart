@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:stroll/src/controller/recorder.dart';
 import 'package:stroll/src/utils/extensions.dart';
@@ -62,15 +64,14 @@ class _RecordingWidgetsState extends State<RecordingWidgets> {
         break;
 
       case RecorderAction.stop:
-        recorder.stopRecording();
+        recorder.stopRecording(() => setState(() {}));
 
         break;
 
       case RecorderAction.pause:
-        recorder.pauseAudio();
+        recorder.pauseAudio(() => setState(() {}));
         break;
     }
-    if (mounted) setState(() {});
   }
 
   @override
@@ -89,7 +90,7 @@ class _RecordingWidgetsState extends State<RecordingWidgets> {
           onHorizontalDragUpdate: (details) {
             double seekPosition =
                 details.localPosition.dx / MediaQuery.sizeOf(context).width;
-            recorder.seekAudio(seekPosition);
+            recorder.seekAudio(seekPosition, () => setState(() {}));
           },
           child: Container(
             color: Colors.transparent,

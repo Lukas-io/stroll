@@ -7,7 +7,7 @@ import 'package:record/record.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:stroll/src/utils/recorder_action.dart';
 import 'package:permission_handler/permission_handler.dart';
- 
+
 import 'audio_processing.dart';
 
 class Recorder {
@@ -15,7 +15,7 @@ class Recorder {
   AudioPlayer player = AudioPlayer();
   late int barNumbers;
 
-  Stopwatch recordingWatch = Stopwatch();
+  Duration recordingDuration = const Duration();
   Duration playingDuration = const Duration();
 
   double audioPosition = 0;
@@ -40,7 +40,7 @@ class Recorder {
   }
 
   String get timeString {
-    int recordingSeconds = recordingWatch.elapsed.inSeconds;
+    int recordingSeconds = recordingDuration.inSeconds;
     int recMinutes = (recordingSeconds / 60).floor();
     int recSeconds = recordingSeconds % 60;
     String recordingTime =
@@ -81,36 +81,37 @@ class Recorder {
 
       player.play();
 
-      player.positionStream.listen((position) {
+      final subscription = player.positionStream.listen((position) {
         audioPosition =
-            position.inMilliseconds / recordingWatch.elapsedMilliseconds;
+            position.inMilliseconds / recordingDuration.inMilliseconds;
         playingDuration = position;
-
         onChanged();
       });
 
+      subscription.onDone(() => onChanged());
+      subscription.onError((error) {
+        debugPrint("Playing had an error: $error");
+      });
+
       player.playerStateStream.listen((state) {
-        if (state.processingState == ProcessingState.completed) {
-          pauseAudio();
-          audioPosition = 1;
-          onChanged();
-        }
+        if (audioPosition == 1) pauseAudio(onChanged);
       });
     } catch (e) {
       debugPrint("Error playing Audio: $e");
     }
   }
 
-  Future<void> pauseAudio() async {
+  Future<void> pauseAudio(Function() onPause) async {
     currentAction = RecorderAction.play;
     await player.pause();
+    onPause();
   }
 
-  Future<void> seekAudio(double position) async {
-    if (player.playing) pauseAudio();
+  Future<void> seekAudio(double position, Function() onSeek) async {
+    if (player.playing) pauseAudio(onSeek);
 
     Duration seekDuration = Duration(
-        milliseconds: (position * recordingWatch.elapsedMilliseconds).floor());
+        milliseconds: (position * recordingDuration.inMilliseconds).floor());
     await player.seek(seekDuration);
   }
 
@@ -120,12 +121,10 @@ class Recorder {
     if (await Permission.microphone.isDenied) {
       await Permission.microphone.request();
     }
-
     currentAction = RecorderAction.stop;
 
     final tempDir = await getTemporaryDirectory();
     final filePath = '${tempDir.path}/recording.wav';
-    recordingWatch.start();
 
     List<int> audioData = [];
 
@@ -153,6 +152,7 @@ class Recorder {
         debugPrint('Recording saved!');
       });
     });
+    Stopwatch watch = Stopwatch()..start();
 
     amplitudeSubscription = recorder
         .onAmplitudeChanged(const Duration(milliseconds: 48))
@@ -161,18 +161,23 @@ class Recorder {
       amplitudesList.add(normalizedAmplitude);
       if (amplitudesMax.length >= barNumbers) amplitudesMax.removeAt(0);
       amplitudesMax.add(normalizedAmplitude);
+      recordingDuration = Duration(milliseconds: watch.elapsedMilliseconds);
 
       onAmplitudeChange(normalizedAmplitude);
     });
   }
 
-  Future<void> stopRecording() async {
+  Future<void> stopRecording(Function() onStop) async {
     currentAction = RecorderAction.play;
     playerMode = true;
-    recordingWatch.stop();
     await recorder.stop();
 
     await amplitudeSubscription?.cancel();
+
+    player.playerStateStream.listen((state) {
+      if (player.duration != null) recordingDuration = player.duration!;
+      onStop();
+    });
   }
 
   // Future<void> deleteRecording() async {
